@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">PPTX Viewer repository hero</title>
+  <desc id="desc">A balanced preview of a presentation viewer with slide list, read-only slide details, notes, media, and diagnostics.</desc>
+  <rect width="1280" height="640" fill="#14161a"/>
+  <rect x="48" y="78" width="1184" height="500" rx="26" fill="#1e2228" stroke="#3a414b" stroke-width="2"/>
+  <rect x="88" y="118" width="290" height="398" rx="16" fill="#252b33"/>
+  <rect x="430" y="118" width="300" height="398" rx="16" fill="#f6f3ee"/>
+  <text x="96" y="50" fill="#dfe5ee" font-family="Arial" font-size="34" font-weight="700">PPTX Viewer</text>
+  <text x="96" y="614" fill="#8f9aa8" font-family="Arial" font-size="20">Read-only slide text, notes, media, and package diagnostics</text>
+  <g font-family="Arial">
+    <text x="118" y="162" fill="#f6f3ee" font-size="18" font-weight="700">Slides</text>
+    <rect x="112" y="186" width="230" height="66" rx="10" fill="#384150" stroke="#76839a"/>
+    <text x="132" y="216" fill="#ffffff" font-size="17" font-weight="700">1 Quarterly Review</text>
+    <text x="132" y="238" fill="#b8c2d1" font-size="13">3 text runs, 2 notes</text>
+    <rect x="112" y="270" width="230" height="66" rx="10" fill="#2c333d"/>
+    <text x="132" y="300" fill="#ffffff" font-size="17" font-weight="700">2 Roadmap</text>
+    <text x="132" y="322" fill="#b8c2d1" font-size="13">3 text runs, 0 notes</text>
+    <rect x="112" y="354" width="230" height="66" rx="10" fill="#2c333d"/>
+    <text x="132" y="384" fill="#ffffff" font-size="17" font-weight="700">3 Appendix</text>
+    <text x="132" y="406" fill="#b8c2d1" font-size="13">media and diagnostics</text>
+  </g>
+  <g font-family="Arial">
+    <text x="470" y="174" fill="#1f2933" font-size="28" font-weight="800">Slide 1</text>
+    <text x="470" y="206" fill="#667085" font-size="16">ppt/slides/slide1.xml</text>
+    <rect x="470" y="240" width="220" height="146" rx="12" fill="#ffffff" stroke="#d7dce3"/>
+    <text x="494" y="274" fill="#1f2933" font-size="16" font-weight="800">Text</text>
+    <text x="494" y="310" fill="#394150" font-size="18">Revenue up</text>
+    <text x="494" y="344" fill="#394150" font-size="18">Costs stable</text>
+    <rect x="470" y="420" width="220" height="68" rx="12" fill="#fff7ed" stroke="#f59e0b"/>
+    <text x="494" y="462" fill="#92400e" font-size="18" font-weight="700">Metadata only</text>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+{
+  "id": "pptx-viewer",
+  "name": "PPTX Viewer",
+  "version": "0.1.0",
+  "minAppVersion": "1.5.0",
+  "description": "Open .pptx slide decks as read-only slide text, notes, media, and package diagnostics.",
+  "author": "Viggo Meesters",
+  "authorUrl": "https://github.com/viggomeesters",
+  "isDesktopOnly": false
+}
+
