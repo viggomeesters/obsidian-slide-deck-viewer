@@ -35,8 +35,9 @@ PPTX Viewer opens `.pptx` slide decks as a read-only inspection view inside the 
 npm install
 node scripts/create-fixtures.mjs
 npm run build
-npx tsc --noEmit
+npm run typecheck
 npm test
+npm run community:check
 ```
 
 ## Community review checklist
