@@ -8,7 +8,7 @@ import {
 } from "obsidian";
 import { ParsedPptx, PptxMedia, PptxPackageEntry, PptxSlide, filterMedia, filterSlides, parsePptx } from "./parser";
 
-const VIEW_TYPE_PPTX_VIEWER = "pptx-viewer";
+const VIEW_TYPE_PPTX_VIEWER = "slide-deck-viewer";
 const PPTX_EXTENSIONS = ["pptx"];
 const MEDIA_RENDER_LIMIT = 120;
 const PACKAGE_RENDER_LIMIT = 240;
@@ -61,7 +61,7 @@ class PptxViewerView extends FileView {
   }
 
   getDisplayText(): string {
-    return this.file?.basename ?? "PPTX viewer";
+    return this.file?.basename ?? "slide deck viewer";
   }
 
   getIcon(): string {
@@ -96,9 +96,9 @@ class PptxViewerView extends FileView {
   private render(): void {
     const container = this.contentEl;
     container.empty();
-    container.addClass("pptx-viewer");
+    container.addClass("slide-deck-viewer");
 
-    const header = container.createDiv({ cls: "pptx-viewer__header" });
+    const header = container.createDiv({ cls: "slide-deck-viewer__header" });
     this.renderTitle(header);
     this.renderToolbar(header);
 
@@ -122,27 +122,27 @@ class PptxViewerView extends FileView {
     renderSummary(container, this.deck);
     renderWarnings(container, this.deck.warnings, "Deck warnings");
 
-    const body = container.createDiv({ cls: "pptx-viewer__body" });
+    const body = container.createDiv({ cls: "slide-deck-viewer__body" });
     this.renderSlideList(body, this.deck);
     this.renderDetail(body, this.deck);
   }
 
   private renderTitle(parent: HTMLElement): void {
-    const title = parent.createDiv({ cls: "pptx-viewer__title" });
+    const title = parent.createDiv({ cls: "slide-deck-viewer__title" });
     title.createDiv({
-      cls: "pptx-viewer__filename",
+      cls: "slide-deck-viewer__filename",
       text: this.file?.name ?? "PPTX file",
     });
     title.createDiv({
-      cls: "pptx-viewer__path",
+      cls: "slide-deck-viewer__path",
       text: this.file?.path ?? "",
     });
   }
 
   private renderToolbar(parent: HTMLElement): void {
-    const toolbar = parent.createDiv({ cls: "pptx-viewer__toolbar" });
-    const searchWrap = toolbar.createDiv({ cls: "pptx-viewer__search" });
-    setIcon(searchWrap.createSpan({ cls: "pptx-viewer__search-icon" }), "search");
+    const toolbar = parent.createDiv({ cls: "slide-deck-viewer__toolbar" });
+    const searchWrap = toolbar.createDiv({ cls: "slide-deck-viewer__search" });
+    setIcon(searchWrap.createSpan({ cls: "slide-deck-viewer__search-icon" }), "search");
     const searchInput = searchWrap.createEl("input", {
       attr: {
         "aria-label": "Filter slides and media",
@@ -164,26 +164,26 @@ class PptxViewerView extends FileView {
   }
 
   private renderSlideList(parent: HTMLElement, deck: ParsedPptx): void {
-    const sidebar = parent.createDiv({ cls: "pptx-viewer__sidebar" });
-    sidebar.createDiv({ cls: "pptx-viewer__section-title", text: "Slides" });
+    const sidebar = parent.createDiv({ cls: "slide-deck-viewer__sidebar" });
+    sidebar.createDiv({ cls: "slide-deck-viewer__section-title", text: "Slides" });
 
     const slides = filterSlides(deck.renderedSlides, this.filterValue);
     if (slides.length === 0) {
-      sidebar.createDiv({ cls: "pptx-viewer__empty", text: "No slides match the filter." });
+      sidebar.createDiv({ cls: "slide-deck-viewer__empty", text: "No slides match the filter." });
       return;
     }
 
     slides.forEach((slide) => {
       const button = sidebar.createEl("button", {
-        cls: "pptx-viewer__slide-button",
+        cls: "slide-deck-viewer__slide-button",
         attr: { type: "button" },
       });
       button.toggleClass("is-active", slide.number === this.activeSlideNumber);
-      button.createSpan({ cls: "pptx-viewer__slide-number", text: String(slide.number) });
-      const label = button.createSpan({ cls: "pptx-viewer__slide-label" });
-      label.createSpan({ cls: "pptx-viewer__slide-title", text: slide.title });
+      button.createSpan({ cls: "slide-deck-viewer__slide-number", text: String(slide.number) });
+      const label = button.createSpan({ cls: "slide-deck-viewer__slide-label" });
+      label.createSpan({ cls: "slide-deck-viewer__slide-title", text: slide.title });
       label.createSpan({
-        cls: "pptx-viewer__slide-meta",
+        cls: "slide-deck-viewer__slide-meta",
         text: `${slide.textCount} text runs, ${slide.noteCount} notes`,
       });
       button.addEventListener("click", () => {
@@ -194,7 +194,7 @@ class PptxViewerView extends FileView {
   }
 
   private renderDetail(parent: HTMLElement, deck: ParsedPptx): void {
-    const detail = parent.createDiv({ cls: "pptx-viewer__detail" });
+    const detail = parent.createDiv({ cls: "slide-deck-viewer__detail" });
     const activeSlide = deck.slides.find((slide) => slide.number === this.activeSlideNumber) ?? deck.renderedSlides[0];
     if (!activeSlide) {
       renderMessage(detail, "No slides are available.");
@@ -216,59 +216,59 @@ class PptxViewerView extends FileView {
 }
 
 function renderSummary(parent: HTMLElement, deck: ParsedPptx): void {
-  const summary = parent.createDiv({ cls: "pptx-viewer__summary" });
-  summary.createSpan({ cls: "pptx-viewer__pill", text: `${deck.summary.slideCount} slides` });
-  summary.createSpan({ cls: "pptx-viewer__pill", text: `${deck.summary.mediaCount} media` });
-  summary.createSpan({ cls: "pptx-viewer__pill", text: `${deck.summary.noteSlideCount} note slides` });
-  summary.createSpan({ cls: "pptx-viewer__pill", text: `${deck.summary.packageEntryCount} package entries` });
+  const summary = parent.createDiv({ cls: "slide-deck-viewer__summary" });
+  summary.createSpan({ cls: "slide-deck-viewer__pill", text: `${deck.summary.slideCount} slides` });
+  summary.createSpan({ cls: "slide-deck-viewer__pill", text: `${deck.summary.mediaCount} media` });
+  summary.createSpan({ cls: "slide-deck-viewer__pill", text: `${deck.summary.noteSlideCount} note slides` });
+  summary.createSpan({ cls: "slide-deck-viewer__pill", text: `${deck.summary.packageEntryCount} package entries` });
   if (deck.summary.externalRelationshipCount > 0) {
-    summary.createSpan({ cls: "pptx-viewer__note", text: `${deck.summary.externalRelationshipCount} external relationships listed` });
+    summary.createSpan({ cls: "slide-deck-viewer__note", text: `${deck.summary.externalRelationshipCount} external relationships listed` });
   }
   if (deck.summary.renderedSlideCount < deck.summary.slideCount) {
-    summary.createSpan({ cls: "pptx-viewer__note", text: `${deck.summary.renderedSlideCount} slides rendered` });
+    summary.createSpan({ cls: "slide-deck-viewer__note", text: `${deck.summary.renderedSlideCount} slides rendered` });
   }
 }
 
 function renderSlide(parent: HTMLElement, slide: PptxSlide): void {
-  const section = parent.createDiv({ cls: "pptx-viewer__slide-detail" });
-  const heading = section.createDiv({ cls: "pptx-viewer__detail-heading" });
-  heading.createDiv({ cls: "pptx-viewer__detail-title", text: `Slide ${slide.number}: ${slide.title}` });
-  heading.createDiv({ cls: "pptx-viewer__detail-path", text: slide.path });
+  const section = parent.createDiv({ cls: "slide-deck-viewer__slide-detail" });
+  const heading = section.createDiv({ cls: "slide-deck-viewer__detail-heading" });
+  heading.createDiv({ cls: "slide-deck-viewer__detail-title", text: `Slide ${slide.number}: ${slide.title}` });
+  heading.createDiv({ cls: "slide-deck-viewer__detail-path", text: slide.path });
   renderWarnings(section, slide.warnings, "Slide warnings");
 
-  const textGrid = section.createDiv({ cls: "pptx-viewer__text-grid" });
+  const textGrid = section.createDiv({ cls: "slide-deck-viewer__text-grid" });
   renderTextBlock(textGrid, "Text", slide.renderedTexts, slide.textCount);
   renderTextBlock(textGrid, "Speaker notes", slide.renderedNotes, slide.noteCount);
 
   if (slide.mediaRefs.length > 0) {
-    const refs = section.createDiv({ cls: "pptx-viewer__refs" });
-    refs.createDiv({ cls: "pptx-viewer__section-title", text: "Media references" });
-    slide.mediaRefs.forEach((ref) => refs.createDiv({ cls: "pptx-viewer__ref", text: ref }));
+    const refs = section.createDiv({ cls: "slide-deck-viewer__refs" });
+    refs.createDiv({ cls: "slide-deck-viewer__section-title", text: "Media references" });
+    slide.mediaRefs.forEach((ref) => refs.createDiv({ cls: "slide-deck-viewer__ref", text: ref }));
   }
 }
 
 function renderTextBlock(parent: HTMLElement, title: string, lines: string[], totalCount: number): void {
-  const block = parent.createDiv({ cls: "pptx-viewer__text-block" });
-  block.createDiv({ cls: "pptx-viewer__section-title", text: title });
+  const block = parent.createDiv({ cls: "slide-deck-viewer__text-block" });
+  block.createDiv({ cls: "slide-deck-viewer__section-title", text: title });
   if (lines.length === 0) {
-    block.createDiv({ cls: "pptx-viewer__empty", text: "No extracted text." });
+    block.createDiv({ cls: "slide-deck-viewer__empty", text: "No extracted text." });
     return;
   }
-  const list = block.createEl("ol", { cls: "pptx-viewer__text-list" });
+  const list = block.createEl("ol", { cls: "slide-deck-viewer__text-list" });
   lines.forEach((line) => list.createEl("li", { text: line }));
   if (lines.length < totalCount) {
-    block.createDiv({ cls: "pptx-viewer__note", text: `${totalCount - lines.length} additional text runs hidden` });
+    block.createDiv({ cls: "slide-deck-viewer__note", text: `${totalCount - lines.length} additional text runs hidden` });
   }
 }
 
 function renderMedia(parent: HTMLElement, media: PptxMedia[]): void {
-  const section = parent.createDiv({ cls: "pptx-viewer__panel" });
-  section.createDiv({ cls: "pptx-viewer__section-title", text: "Media" });
+  const section = parent.createDiv({ cls: "slide-deck-viewer__panel" });
+  section.createDiv({ cls: "slide-deck-viewer__section-title", text: "Media" });
   if (media.length === 0) {
-    section.createDiv({ cls: "pptx-viewer__empty", text: "No media matches the current filter." });
+    section.createDiv({ cls: "slide-deck-viewer__empty", text: "No media matches the current filter." });
     return;
   }
-  const table = section.createEl("table", { cls: "pptx-viewer__table" });
+  const table = section.createEl("table", { cls: "slide-deck-viewer__table" });
   const head = table.createEl("thead").createEl("tr");
   ["Name", "Type", "Size"].forEach((label) => head.createEl("th", { text: label }));
   const body = table.createEl("tbody");
@@ -279,14 +279,14 @@ function renderMedia(parent: HTMLElement, media: PptxMedia[]): void {
     row.createEl("td", { text: formatBytes(item.size) });
   });
   if (media.length > MEDIA_RENDER_LIMIT) {
-    section.createDiv({ cls: "pptx-viewer__note", text: `${media.length - MEDIA_RENDER_LIMIT} additional media files hidden` });
+    section.createDiv({ cls: "slide-deck-viewer__note", text: `${media.length - MEDIA_RENDER_LIMIT} additional media files hidden` });
   }
 }
 
 function renderPackageEntries(parent: HTMLElement, entries: PptxPackageEntry[]): void {
-  const section = parent.createDiv({ cls: "pptx-viewer__panel" });
-  section.createDiv({ cls: "pptx-viewer__section-title", text: "Package diagnostics" });
-  const table = section.createEl("table", { cls: "pptx-viewer__table" });
+  const section = parent.createDiv({ cls: "slide-deck-viewer__panel" });
+  section.createDiv({ cls: "slide-deck-viewer__section-title", text: "Package diagnostics" });
+  const table = section.createEl("table", { cls: "slide-deck-viewer__table" });
   const head = table.createEl("thead").createEl("tr");
   ["Path", "Kind", "Size"].forEach((label) => head.createEl("th", { text: label }));
   const body = table.createEl("tbody");
@@ -297,31 +297,31 @@ function renderPackageEntries(parent: HTMLElement, entries: PptxPackageEntry[]):
     row.createEl("td", { text: entry.directory ? "" : formatBytes(entry.size) });
   });
   if (entries.length > PACKAGE_RENDER_LIMIT) {
-    section.createDiv({ cls: "pptx-viewer__note", text: `${entries.length - PACKAGE_RENDER_LIMIT} additional package entries hidden` });
+    section.createDiv({ cls: "slide-deck-viewer__note", text: `${entries.length - PACKAGE_RENDER_LIMIT} additional package entries hidden` });
   }
 }
 
 function renderWarnings(parent: HTMLElement, warnings: string[], title: string): void {
   if (warnings.length === 0) return;
-  const box = parent.createDiv({ cls: "pptx-viewer__warnings" });
-  box.createDiv({ cls: "pptx-viewer__warnings-title", text: title });
-  warnings.slice(0, 8).forEach((warning) => box.createDiv({ cls: "pptx-viewer__warning", text: warning }));
+  const box = parent.createDiv({ cls: "slide-deck-viewer__warnings" });
+  box.createDiv({ cls: "slide-deck-viewer__warnings-title", text: title });
+  warnings.slice(0, 8).forEach((warning) => box.createDiv({ cls: "slide-deck-viewer__warning", text: warning }));
   if (warnings.length > 8) {
-    box.createDiv({ cls: "pptx-viewer__warning-more", text: `${warnings.length - 8} additional warnings hidden` });
+    box.createDiv({ cls: "slide-deck-viewer__warning-more", text: `${warnings.length - 8} additional warnings hidden` });
   }
 }
 
 function createIconButton(parent: HTMLElement, icon: string, label: string): HTMLButtonElement {
   const button = parent.createEl("button", {
     attr: { "aria-label": label, title: label, type: "button" },
-    cls: "clickable-icon pptx-viewer__button",
+    cls: "clickable-icon slide-deck-viewer__button",
   });
   setIcon(button, icon);
   return button;
 }
 
 function renderMessage(parent: HTMLElement, message: string): void {
-  parent.createDiv({ cls: "pptx-viewer__message", text: message });
+  parent.createDiv({ cls: "slide-deck-viewer__message", text: message });
 }
 
 function isPptxFile(file: TFile | null): file is TFile {

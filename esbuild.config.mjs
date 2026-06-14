@@ -5,7 +5,7 @@ const production = process.env.NODE_ENV === "production";
 
 await esbuild.build({
   banner: {
-    js: "/* PPTX Viewer generated bundle */",
+    js: "/* Slide Deck Viewer generated bundle */",
   },
   bundle: true,
   entryPoints: ["src/main.ts"],

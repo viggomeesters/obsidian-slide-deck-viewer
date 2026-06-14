@@ -1,17 +1,17 @@
 {
-  "name": "obsidian-pptx-viewer",
-  "version": "0.1.0",
+  "name": "obsidian-slide-deck-viewer",
+  "version": "0.1.1",
   "description": "Read-only PPTX slide inspection view.",
   "license": "MIT",
   "author": "Viggo Meesters",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/viggomeesters/obsidian-pptx-viewer.git"
+    "url": "git+https://github.com/viggomeesters/obsidian-slide-deck-viewer.git"
   },
   "bugs": {
-    "url": "https://github.com/viggomeesters/obsidian-pptx-viewer/issues"
+    "url": "https://github.com/viggomeesters/obsidian-slide-deck-viewer/issues"
   },
-  "homepage": "https://github.com/viggomeesters/obsidian-pptx-viewer#readme",
+  "homepage": "https://github.com/viggomeesters/obsidian-slide-deck-viewer#readme",
   "type": "module",
   "scripts": {
     "build": "NODE_ENV=production node esbuild.config.mjs",

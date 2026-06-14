@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
-  <title id="title">PPTX Viewer screenshot mock</title>
-  <desc id="desc">A screenshot-style mock of the PPTX Viewer interface.</desc>
+  <title id="title">Slide Deck Viewer screenshot mock</title>
+  <desc id="desc">A screenshot-style mock of the Slide Deck Viewer interface.</desc>
   <rect width="1400" height="900" fill="#20242b"/>
   <rect x="44" y="40" width="1312" height="820" rx="18" fill="#111318"/>
   <rect x="76" y="84" width="1248" height="88" rx="10" fill="#1e232b"/>

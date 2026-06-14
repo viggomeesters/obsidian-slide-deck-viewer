@@ -20,9 +20,9 @@ const forbidden = [
 ];
 
 const assertions = [
-  [manifest.id === "pptx-viewer", "manifest id is pptx-viewer"],
-  [manifest.name === "PPTX Viewer", "manifest name is PPTX Viewer"],
-  [manifest.version === "0.1.0", "manifest version is 0.1.0"],
+  [manifest.id === "slide-deck-viewer", "manifest id is slide-deck-viewer"],
+  [manifest.name === "Slide Deck Viewer", "manifest name is Slide Deck Viewer"],
+  [manifest.version === "0.1.1", "manifest version is 0.1.1"],
   [versions[manifest.version] === manifest.minAppVersion, "versions.json maps manifest version"],
   [!/obsidian/i.test(manifest.description), "manifest description avoids product name"],
   [/^[a-z-]+$/.test(manifest.id) && !manifest.id.includes("obsidian") && !manifest.id.endsWith("plugin"), "manifest id follows directory rules"],
@@ -56,4 +56,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log("PPTX Viewer smoke checks passed.");
+console.log("Slide Deck Viewer smoke checks passed.");

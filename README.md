@@ -1,8 +1,8 @@
-# PPTX Viewer
+# Slide Deck Viewer
 
-PPTX Viewer opens `.pptx` slide decks as a read-only inspection view inside the app. It focuses on slide text, speaker notes, media metadata, relationships, warnings, and package diagnostics.
+Slide Deck Viewer opens `.pptx` slide decks as a read-only inspection view inside the app. It focuses on slide text, speaker notes, media metadata, relationships, warnings, and package diagnostics.
 
-![PPTX Viewer repo hero](assets/hero.svg)
+![Slide Deck Viewer repo hero](assets/hero.svg)
 
 ## Features
 
@@ -26,8 +26,8 @@ PPTX Viewer opens `.pptx` slide decks as a read-only inspection view inside the 
 ## Install from release
 
 1. Download `main.js`, `manifest.json`, and `styles.css` from the matching GitHub release.
-2. Place them in `.obsidian/plugins/pptx-viewer/`.
-3. Enable `PPTX Viewer` in Community plugins.
+2. Place them in `.obsidian/plugins/slide-deck-viewer/`.
+3. Enable `Slide Deck Viewer` in Community plugins.
 
 ## Development
 
@@ -42,9 +42,9 @@ npm run community:check
 
 ## Community review checklist
 
-- Plugin id is `pptx-viewer`.
+- Plugin id is `slide-deck-viewer`.
 - `manifest.json` version matches `versions.json`.
-- Release tag is exactly `0.1.0`, not `v0.1.0`.
+- Release tag is exactly `0.1.1`, not `v0.1.1`.
 - Release includes `main.js`, `manifest.json`, and `styles.css`.
 - Runtime code does not use network, clipboard, shell, eval, write-back, or external app launch APIs.
 - Manifest description avoids restricted product-name wording.

@@ -1,6 +1,6 @@
 # Security
 
-PPTX Viewer treats slide decks as untrusted local documents.
+Slide Deck Viewer treats slide decks as untrusted local documents.
 
 - It does not execute macros, VBA, OLE objects, embedded packages, scripts, or external relationships.
 - It does not upload files or make network requests.

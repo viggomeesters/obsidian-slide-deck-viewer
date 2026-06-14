@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
-  <title id="title">PPTX Viewer repository hero</title>
+  <title id="title">Slide Deck Viewer repository hero</title>
   <desc id="desc">A balanced preview of a presentation viewer with slide list, read-only slide details, notes, media, and diagnostics.</desc>
   <rect width="1280" height="640" fill="#14161a"/>
   <rect x="48" y="78" width="1184" height="500" rx="26" fill="#1e2228" stroke="#3a414b" stroke-width="2"/>
   <rect x="88" y="118" width="290" height="398" rx="16" fill="#252b33"/>
   <rect x="430" y="118" width="300" height="398" rx="16" fill="#f6f3ee"/>
-  <text x="96" y="50" fill="#dfe5ee" font-family="Arial" font-size="34" font-weight="700">PPTX Viewer</text>
+  <text x="96" y="50" fill="#dfe5ee" font-family="Arial" font-size="34" font-weight="700">Slide Deck Viewer</text>
   <text x="96" y="614" fill="#8f9aa8" font-family="Arial" font-size="20">Read-only slide text, notes, media, and package diagnostics</text>
   <g font-family="Arial">
     <text x="118" y="162" fill="#f6f3ee" font-size="18" font-weight="700">Slides</text>
