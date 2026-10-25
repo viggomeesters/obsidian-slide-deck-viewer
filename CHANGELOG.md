@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2 - 2026-10-25
+
+- Cross-platform production build.
+- Local preflight no longer requires Actions; directory identity comparison.
+
+
 ## 0.1.1
 
 - Renamed the plugin id and repository metadata from `pptx-viewer` / `obsidian-pptx-viewer` to `slide-deck-viewer` / `obsidian-slide-deck-viewer` because the live Community directory already has a `pptx-viewer` plugin.

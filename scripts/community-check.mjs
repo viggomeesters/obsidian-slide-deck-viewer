@@ -61,10 +61,10 @@ async function checkCommunityDirectory() {
   const rawIdMatch = plugins.find((plugin) => plugin.id === manifest.id);
   const rawNameMatch = plugins.find((plugin) => plugin.name?.toLowerCase() === lowerName);
 
-  if (rawIdMatch && rawIdMatch.repo !== expectedRepo) {
+  if (rawIdMatch && rawIdMatch.repo !== expectedRepo.replace("https://github.com/", "")) {
     failures.push(`community directory already has id ${manifest.id}`);
   }
-  if (rawNameMatch && rawNameMatch.repo !== expectedRepo) {
+  if (rawNameMatch && rawNameMatch.repo !== expectedRepo.replace("https://github.com/", "")) {
     failures.push(`community directory already has name ${manifest.name}`);
   }
 
