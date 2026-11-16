@@ -1,6 +1,6 @@
 {
   "name": "obsidian-slide-deck-viewer",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Read-only PPTX slide inspection view.",
   "license": "MIT",
   "author": "Viggo Meesters",
