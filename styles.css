@@ -1,4 +1,6 @@
 .slide-deck-viewer {
+  container-name: slide-deck-viewer;
+  container-type: inline-size;
   --slide-deck-viewer-border: var(--background-modifier-border);
   --slide-deck-viewer-muted: var(--text-muted);
   --slide-deck-viewer-code: var(--font-monospace);
@@ -299,6 +301,26 @@
   min-height: 180px;
   padding: 18px;
   text-align: center;
+}
+
+@container slide-deck-viewer (max-width: 860px) {
+  .slide-deck-viewer__header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .slide-deck-viewer__toolbar {
+    justify-content: flex-start;
+  }
+
+  .slide-deck-viewer__body,
+  .slide-deck-viewer__text-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .slide-deck-viewer__sidebar {
+    max-height: 220px;
+  }
 }
 
 @media (max-width: 860px) {
